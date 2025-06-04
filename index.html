@@ -20,8 +20,12 @@
 		@keyframes float {0% {transform: translateY(0);} 50% {transform: translateY(-40px);} 100% {transform: translateY(0);}}
 		.container2 {height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; text-align: center; backdrop-filter: blur(2px);}
 		h1 {font-size: 70px; line-height: 1.2; text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);}
-		h1 {font-size: 70px; line-height: 1.2; text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);}
+		h2 {font-size: 25px; line-height: 1.2; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); padding-top: 15px;}
 		@keyframes fadeInUptext {0% {opacity: 0; transform: translateY(30px);} 100% {opacity: 1; transform: translateY(0);}}
+		.bg-pic {background: url(Back3.png); background-size: cover; background-position: center; background-attachment: fixed;}
+		.bg-pic2 {background: url(Back4.png); background-size: cover; background-position: center; background-attachment: fixed;}
+		.bg-pic3 {background: url(Back5.png); background-size: cover; background-position: center; background-attachment: fixed;}
+		.bg-pic4 {background: url(Back6.png); background-size: cover; background-position: center; background-attachment: fixed;}
 		.fade-in-text {opacity: 0; animation: fadeInUptext 0.8s forwards;}
 		.fade-in-text.delay-1 {animation-delay: 0.2s;}
 		.fade-in-text.delay-2 {animation-delay: 0.4s;}
@@ -30,11 +34,14 @@
 		.cta-button:hover {box-shadow: 0 0 30px 10px rgba(245, 201, 68, 0.8); background-color: #ffe066;}
 		.subtitle {font-size: 18px; margin-top: 30px; margin-bottom: 50px;}
 		.cards {display: flex; justify-items: center; gap: 70px; margin-bottom: 40px;}
-		.card1 {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3); opacity: 0; transform: translateY(30px); animation: fadeInUp 0.6s forwards;}
-		.card2 {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3); opacity: 0; transform: translateY(30px); animation: fadeInUp 0.6s forwards; animation-delay: 0.4s;}
-		.card3 {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3); opacity: 0; transform: translateY(30px); animation: fadeInUp 0.6s forwards; animation-delay: 0.8s;}
+		.card1 {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3); opacity: 0; animation: fadeInOpacity 0.6s forwards;}
+		.card2 {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3); opacity: 0; animation: fadeInOpacity 0.6s forwards;}
+		.card3 {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3); opacity: 0; animation: fadeInOpacity 0.6s forwards;}
+		.card1, .card2, .card3 {transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;}
+		.card1:hover, .card2:hover, .card3:hover {transform: translateY(-10px); box-shadow: 0 50px 60px rgba(245, 201, 68, 0.5);}
+		.card1:active, .card2:active, .card3:active {transform: translateY(2px); box-shadow: 0 30px 40px rgba(245, 201, 68, 0.3);}
 		.cardresult {width: 246px; height: 420px; object-fit: cover; border: 1px solid #f5c944; box-shadow: 0 40px 50px rgba(245, 201, 68, 0.3);}
-		@keyframes fadeInUp {to {opacity: 1; transform: translateY(0);}}
+		@keyframes fadeInOpacity {from {opacity: 0;} to {opacity: 1;}}
 		.cardresult {height:420px; border: 2px; box-shadow: 0 20px 40px rgba(245, 201, 68, 0.2);}
 		.result-content-side {display: flex; gap: 60px; align-items: flex-start; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;}
 		.text-box-group {display: flex; flex-direction: column; gap: 40px; max-width: 650px;}
@@ -42,6 +49,13 @@
 		.result-title {position: absolute; top: -22px; left: 30px; background-color: #f5c944; color: #222; padding: 10px 20px; fon-size: 18px; font-family: 'Calypso', serif; border-radius: 30px; box-shadow: 0 3px 8px rgba(245, 201, 68, 0.3); white-space: nowrap; z-index: 2;}
 		.result-body {background-color: #1e1e1e; color: #f5c944; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px; font-size: 16px; line-height: 1.6;}}
 		.result-advice {font-size: 20px; font-weight: 500;}
+		.card-flip {perspective: 1000px; width: 170px; height: 350px; padding-top: 50px;}
+		.card-inner {width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: spinCard 4s linear infinite;}
+		@keyframes spinCard {from {transform: rotateY(0deg);} to {transform: rotateY(360deg);}}
+		.card-front, .card-back {position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px;}
+		.card-front {transform: rotateY(0deg); z-index: 2;}
+		.card-back {transform: rotateY(180deg);}
+		.card-front img, .card-back img {width: 100%; height: 100%; object-fit: cover; border-radius: 12px;}
 
 
 	</style>
@@ -61,7 +75,7 @@
 			<a href="#love" class="cta-button">Start Reading →</a>
 		</section>
 
-		<section id="love" class="container2">
+		<section id="love" class="container2 bg-pic">
 			<h1 class="fade-in-text">LOVE AND RELATIONSHIPS</h1>
 			<p class="subtitle fade-in-text">What do the cards say about your love life?</p>
 
@@ -74,7 +88,7 @@
 			<a href="#" class="cta-button" id="drawButton">Draw Tarot →</a>
 		</section>
 
-		<section id="loveResult" class="container2" style="display: none;">
+		<section id="loveResult" class="container2 bg-pic" style="display: none;">
 			<h1 class="fade-in-text">LOVE AND RELATIONSHIPS</h1>
 			<p class="subtitle fade-in-text">Choose one card below</p>
 			<div class="result-content-side">
@@ -110,7 +124,7 @@
 			</div>
 		</section>
 
-		<section id="career" class="container2">
+		<section id="career" class="container2 bg-pic2">
 			<h1 class="fade-in-text">CAREER & FINANCES</h1>
 			<p class="subtitle fade-in-text">What do the cards say about your career?</p>
 
@@ -123,7 +137,7 @@
 			<a href="#" class="cta-button" id="drawButton">Draw Tarot →</a>
 		</section>
 
-		<section id="careerResult" class="container2" style="display: none;">
+		<section id="careerResult" class="container2 bg-pic2" style="display: none;">
 			<h1 class="fade-in-text">Career & Finances</h1>
 			<p class="subtitle fade-in-text">Choose one card below</p>
 			<div class="result-content-side">
@@ -159,7 +173,7 @@
 			</div>
 		</section>
 
-		<section id="personal" class="container2">
+		<section id="personal" class="container2 bg-pic3">
 			<h1 class="fade-in-text">PERSONAL GROWTH</h1>
 			<p class="subtitle fade-in-text">What do the cards say about your personal growth?</p>
 
@@ -172,7 +186,7 @@
 			<a href="#" class="cta-button" id="drawButton">Draw Tarot →</a>
 		</section>
 
-		<section id="personalResult" class="container2" style="display: none;">
+		<section id="personalResult" class="container2 bg-pic3" style="display: none;">
 			<h1 class="fade-in-text">Personal Growth</h1>
 			<p class="subtitle fade-in-text">Choose one card below</p>
 			<div class="result-content-side">
@@ -208,7 +222,7 @@
 			</div>
 		</section>
 
-		<section id="health" class="container2">
+		<section id="health" class="container2 bg-pic4">
 			<h1 class="fade-in-text">HEALTH & ENERGY</h1>
 			<p class="subtitle fade-in-text">What do the cards say about your health state?</p>
 
@@ -221,7 +235,7 @@
 			<a href="#" class="cta-button" id="drawButton">Draw Tarot →</a>
 		</section>
 
-		<section id="healthResult" class="container2" style="display: none;">
+		<section id="healthResult" class="container2 bg-pic4" style="display: none;">
 			<h1 class="fade-in-text">Health & Energy</h1>
 			<p class="subtitle fade-in-text">Choose one card below</p>
 			<div class="result-content-side">
@@ -257,6 +271,22 @@
 			</div>
 
 			<a href="#" class="cta-button" onclick="location.reload()">Redraw Tarot →</a>
+		</section>
+
+		<section id="end" class="container">
+  
+			<h1 class="fade-in-text">The Cards Have Spoken</h1>
+			<h2>May these Tarot insights bring clarity to your day.<br>Thank you for your trust.</h2>
+			<div class="card-flip">
+			  <div class="card-inner">
+			    <div class="card-front">
+			      <img class="cardback" src="cardback.png">
+			    </div>
+			    <div class="card-back">
+			      <img class="card-end" src="WheelOfFortune.png">
+			    </div>
+			  </div>
+			</div>
 		</section>
 
 </body>
